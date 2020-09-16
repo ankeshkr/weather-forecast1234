@@ -25,7 +25,7 @@ SECRET_KEY = 'di4t0t5g+4ynji++$py=6rql89=-1kd%0i78kp!^*l-_8#2g!('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['weather-forecast1234.herokuapp.com','127.0.0.1:8000']
+ALLOWED_HOSTS = ['weather-forecast1234.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
