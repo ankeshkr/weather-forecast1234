@@ -1,0 +1,8 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  web:
+      build: .
+      command: python manage.py runserver 0.0.0.0:80
+      image: webapp:myweather
+      ports:
+          - "8000:80"
