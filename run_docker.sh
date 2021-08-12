@@ -4,7 +4,8 @@
 
 # Step 1:
 # Build image and add a descriptive tag
-docker build --tag=myweather .
+#docker build --tag=myweather .
+docker build -t ankesh9323/my-weather:1.0 .
 
 # Step 2: 
 # List docker images
