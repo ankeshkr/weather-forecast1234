@@ -9,4 +9,4 @@ COPY . /app
 RUN pip install -r requirements.txt
 #Expose port 80
 EXPOSE 80
-ADD . /app
+#ADD . /app
