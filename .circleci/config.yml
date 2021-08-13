@@ -152,7 +152,7 @@ workflows:
      #        - test-deployment
      #       resource-name:  deployment/my-capstone-deployment            
         
-        - aws-eks/delete-cluster:
-            cluster-name: capstone-myweather
-            requires:
-              - aws-eks/update-container-image
+     #   - aws-eks/delete-cluster:
+    #        cluster-name: capstone-myweather
+    #        requires:
+    #          - aws-eks/update-container-image
