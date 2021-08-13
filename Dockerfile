@@ -7,7 +7,7 @@ WORKDIR /app
 # add all files to working directory
 COPY . /app
 RUN pip install -r requirements.txt
-RUN pip install pylint
+RUN pip install pylint=2.9.2
 #Expose port 80
 EXPOSE 80
 #ADD . /app
