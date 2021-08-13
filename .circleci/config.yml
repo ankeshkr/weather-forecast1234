@@ -9,10 +9,10 @@ orbs:
       
 jobs:
   lint:
-    docker:
-      - image: python:3.9.0-alpine
   #  docker:
-  #    - image: circleci/node:13.8.0
+  #    - image: python:3.9.0-alpine
+    docker:
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - run:
