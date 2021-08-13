@@ -10,7 +10,9 @@ orbs:
 jobs:
   lint:
     docker:
-      - image: circleci/node:13.8.0
+      - image: python:3.9.0-alpine
+  #  docker:
+  #    - image: circleci/node:13.8.0
     steps:
       - checkout
       - run:
@@ -116,7 +118,7 @@ jobs:
 
 
 workflows:
-    udacity:
+    my-weather:
       jobs:
         - lint
         - smoke_test:
