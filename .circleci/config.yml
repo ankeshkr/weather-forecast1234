@@ -48,10 +48,10 @@ jobs:
           command: |
             docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PWD}
             docker build -t ankesh9323/my-weather:3.0 .
-            docker run -d --rm --name weather ankesh9323/my-weather:3.0
+            docker-compose up --detach --name weather ankesh9323/my-weather:3.0
             sleep 10
             docker ps
-            export url="http://localhost:8080"
+            export url="http://localhost:8000"
             export response=$(curl -s $url)
             echo "This is response $response"
             docker push ankesh9323/my-weather:3.0
