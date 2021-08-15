@@ -122,10 +122,7 @@ workflows:
     my-weather:
       jobs:
         - lint
-     #   - smoke_test:
-    #        requires:
-     #         - lint
-        - config-image:
+        - config-image
         - aws-eks/create-cluster:
             cluster-name: capstone-myweather
             requires:
