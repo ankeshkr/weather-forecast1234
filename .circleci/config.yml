@@ -54,13 +54,14 @@ jobs:
             export url="http://localhost:8080"
             export response=$(curl -s $url)
             echo "This is response $response"
+            docker push ankesh9323/my-weather:3.0
     ##        if [[ $response == *"NodeJS app"* ]]; then              
     #          docker stop nodeapp
     #        else              
     #          docker stop nodeapp
     #          exit 1
     #        fi
-            docker push ankesh9323/my-weather:3.0
+    #        docker push ankesh9323/my-weather:3.0
             
   test-cluster:
     executor: aws-eks/python3
