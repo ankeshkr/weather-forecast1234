@@ -48,7 +48,7 @@ jobs:
           command: |
             docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PWD}
             docker build -t ankesh9323/my-weather:3.0 .
-            docker-compose up
+            docker-compose up -d
             sleep 10
             docker ps
             export url="http://localhost:8000"
@@ -56,9 +56,9 @@ jobs:
             echo "This is response $response"
             docker push ankesh9323/my-weather:3.0
             if [[ $response == *"green"* ]]; then              
-              docker stop weather
+              docker stop weather-forecast1234_web_1
             else              
-              docker stop weather
+              docker stop weather-forecast1234_web_1
               exit 1
             fi
             docker push ankesh9323/my-weather:3.0
