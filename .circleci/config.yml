@@ -54,8 +54,7 @@ jobs:
             export url="http://localhost:8000"
             export response=$(curl -s $url)
             echo "This is response $response"
-            docker push ankesh9323/my-weather:3.0
-            if [[ $response == *"green"* ]]; then              
+            if [[ $response == *"Green Deployment"* ]]; then              
               docker stop app_web_1
             else              
               docker stop app_web_1
