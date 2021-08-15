@@ -47,20 +47,20 @@ jobs:
           name: Build, test and push docker image
           command: |
             docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PWD}
-            docker build -t ankesh9323/my-weather:2.0 .
-            docker run -d --rm --name nodeapp -p 8080:8080 leenabhavnani/my-node-app:2.0
-            sleep 10
+            docker build -t ankesh9323/my-weather:3.0
+         #   docker run -d --rm --name nodeapp -p 8080:8080 leenabhavnani/my-node-app:2.0
+     #       sleep 10
             docker container ls
-            export url="http://localhost:8080"
-            export response=$(curl -s $url)
-            echo "This is response $response"
-            if [[ $response == *"NodeJS app"* ]]; then              
-              docker stop nodeapp
-            else              
-              docker stop nodeapp
-              exit 1
-            fi
-            docker push leenabhavnani/my-node-app:2.0
+    #        export url="http://localhost:8080"
+    #        export response=$(curl -s $url)
+    #        echo "This is response $response"
+    ##        if [[ $response == *"NodeJS app"* ]]; then              
+    #          docker stop nodeapp
+    #        else              
+    #          docker stop nodeapp
+    #          exit 1
+    #        fi
+            docker push ankesh9323/my-weather:3.0
             
   test-cluster:
     executor: aws-eks/python3
@@ -121,28 +121,26 @@ workflows:
     my-weather:
       jobs:
         - lint
-        - smoke_test:
+     #   - smoke_test:
+    #        requires:
+     #         - lint
+        - config-image:
+        - aws-eks/create-cluster:
+            cluster-name: capstone-myweather
             requires:
-              - lint
-     #   - config-image:
-     #       requires:
-     #         - smoke_test
-     #   - aws-eks/create-cluster:
-     #       cluster-name: capstone-myweather
-     #       requires:
-     #         - config-image
-     #   - test-cluster:
-     #       cluster-name: capstone-myweather
-     #       requires:
-     #         - aws-eks/create-cluster
-     #   - create-deployment:
-     #       cluster-name:  capstone-myweather
-     #       requires:
-     #         - test-cluster
-     #   - test-deployment:
-     #       cluster-name:  capstone-myweather
-     #       requires:
-     #         - create-deployment              
+              - config-image
+        - test-cluster:
+            cluster-name: capstone-myweather
+            requires:
+              - aws-eks/create-cluster
+        - create-deployment:
+            cluster-name:  capstone-myweather
+            requires:
+              - test-cluster
+        - test-deployment:
+            cluster-name:  capstone-myweather
+            requires:
+              - create-deployment              
      #   - aws-eks/update-container-image:
      #       cluster-name: capstone-myweather
      #       container-image-updates: 'my-capstone-deployment=leenabhavnani/my-node-app:2.0'
