@@ -56,9 +56,9 @@ jobs:
             echo "This is response $response"
             docker push ankesh9323/my-weather:3.0
             if [[ $response == *"green"* ]]; then              
-              docker stop weather-forecast1234_web_1
+              docker stop app_web_1
             else              
-              docker stop weather-forecast1234_web_1
+              docker stop app_web_1
               exit 1
             fi
             docker push ankesh9323/my-weather:3.0
