@@ -6,15 +6,24 @@ metadata:
     app: udacity-capstone
   namespace: default
 spec:
-  replicas: 4
   selector:
     matchLabels:
       app: udacity-capstone
+  replicas: 2
   strategy:
     rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
+      maxUnavailable: 1
     type: RollingUpdate
+  
+ # replicas: 4
+#  selector:
+#    matchLabels:
+#      app: udacity-capstone
+#  strategy:
+ #   rollingUpdate:
+#      maxSurge: 25%
+ #     maxUnavailable: 25%
+#    type: RollingUpdate
   template:
     metadata:
       labels:
