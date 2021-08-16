@@ -131,7 +131,7 @@ workflows:
             requires:
               - aws-eks/create-cluster
         - create-deployment:
-            cluster-name:  mycapstone-myweather
+            cluster-name:  mycapstone-myweather1
             requires:
               - test-cluster
         - test-deployment:
