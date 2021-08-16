@@ -123,11 +123,11 @@ workflows:
         - lint
         - config-image
         - aws-eks/create-cluster:
-            cluster-name: mycapstone-myweather
+            cluster-name: mycapstone-myweather1
             requires:
               - config-image
         - test-cluster:
-            cluster-name: mycapstone-myweather
+            cluster-name: mycapstone-myweather1
             requires:
               - aws-eks/create-cluster
         - create-deployment:
@@ -135,7 +135,7 @@ workflows:
             requires:
               - test-cluster
         - test-deployment:
-            cluster-name:  mycapstone-myweather
+            cluster-name:  mycapstone-myweather1
             requires:
               - create-deployment              
      #   - aws-eks/update-container-image:
