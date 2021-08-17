@@ -39,6 +39,6 @@ spec:
   selector:
     app: udacity-capstone
   ports:
-    - port: 8080
+    - port: 8000
       targetPort: 80
       protocol: TCP
