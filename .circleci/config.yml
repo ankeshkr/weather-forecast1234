@@ -94,7 +94,7 @@ jobs:
           cluster-name: << parameters.cluster-name >>
           install-kubectl: true
       - kubernetes/create-or-update-resource:
-          get-rollout-status: false
+          get-rollout-status: true
           resource-file-path: deployment.yml
           resource-name: deployment/udacity-capstone
           
@@ -123,19 +123,19 @@ workflows:
         - lint
         - config-image
         - aws-eks/create-cluster:
-            cluster-name: mycapstone-myweather116
+            cluster-name: mycapstone-myweather117
             requires:
               - config-image
         - test-cluster:
-            cluster-name: mycapstone-myweather116
+            cluster-name: mycapstone-myweather117
             requires:
               - aws-eks/create-cluster
         - create-deployment:
-            cluster-name:  mycapstone-myweather116
+            cluster-name:  mycapstone-myweather117
             requires:
               - test-cluster
         - test-deployment:
-            cluster-name:  mycapstone-myweather116
+            cluster-name:  mycapstone-myweather117
             requires:
               - create-deployment              
      #   - aws-eks/update-container-image:
