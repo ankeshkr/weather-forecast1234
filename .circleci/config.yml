@@ -139,8 +139,8 @@ workflows:
             requires:
               - create-deployment              
         - aws-eks/update-container-image:
-            cluster-name: capstone-myweather
-            container-image-updates: 'my-capstone-deployment=ankesh9323/myweather:3.0'
+            cluster-name: mycapstone-myweather121
+            container-image-updates: 'my-capstone-deployment=ankesh9323/my-weather:3.0'
             get-rollout-status: true
             record: true
             requires:
@@ -148,6 +148,6 @@ workflows:
             resource-name:  deployment/my-capstone-deployment            
         
         - aws-eks/delete-cluster:
-            cluster-name: capstone-myweather
+            cluster-name: mycapstone-myweather121
             requires:
               - aws-eks/update-container-image
