@@ -123,23 +123,23 @@ workflows:
         - lint
         - config-image
         - aws-eks/create-cluster:
-            cluster-name: mycapstone-myweather122
+            cluster-name: mycapstone-myweather1234
             requires:
               - config-image
         - test-cluster:
-            cluster-name: mycapstone-myweather122
+            cluster-name: mycapstone-myweather1234
             requires:
               - aws-eks/create-cluster
         - create-deployment:
-            cluster-name:  mycapstone-myweather122
+            cluster-name:  mycapstone-myweather1234
             requires:
               - test-cluster
         - test-deployment:
-            cluster-name:  mycapstone-myweather122
+            cluster-name:  mycapstone-myweather1234
             requires:
               - create-deployment              
         - aws-eks/update-container-image:
-            cluster-name: mycapstone-myweather122
+            cluster-name: mycapstone-myweather1234
             container-image-updates: 'my-capstone-deployment=ankesh9323/my-weather:3.0'
             get-rollout-status: true
             record: true
