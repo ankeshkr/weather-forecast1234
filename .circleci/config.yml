@@ -149,5 +149,5 @@ workflows:
         
         - aws-eks/delete-cluster:
             cluster-name: mycapstone-myweather1234567
-            requires:
-              - aws-eks/update-container-image
+          #  requires:
+          #    - aws-eks/update-container-image
